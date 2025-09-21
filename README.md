@@ -215,6 +215,24 @@ npm run build
 
 ### 部署选项
 
+#### Bluehost（共享主机 / cPanel）
+
+1) 手动部署（最快）
+
+- 运行 `npm run build`，得到 `dist/` 目录
+- 登录 cPanel → File Manager → 进入 `public_html/`
+- 上传 `dist/` 内的所有文件到 `public_html/`
+- 确保把仓库中的 `public/.htaccess` 一并上传到根目录（`public_html/.htaccess`），用于 SPA 路由
+- 若显示 404/刷新白屏，多半是缺 `.htaccess`
+
+2) GitHub Actions 自动部署（推荐）
+
+- 在 GitHub 仓库中添加 Secrets：`FTP_HOST`、`FTP_USERNAME`、`FTP_PASSWORD`
+- 默认部署到 `public_html/`，可在 `.github/workflows/deploy-bluehost.yml` 中调整
+- 推送到 `main` 分支即自动构建并通过 FTPS 同步 `dist/`
+
+注意：若你的 Bluehost 仅支持 FTP（不支持 FTPS），可将 `protocol: ftps` 改为 `ftp`。
+
 #### Vercel 部署
 ```bash
 npm i -g vercel
