@@ -9,12 +9,16 @@ import type { Movie } from '../types'
 interface MovieCardProps {
   movie: Movie
   onFavoriteChange?: () => void
+  mediaType?: 'movie' | 'tv' // 新增：区分电影和电视剧
 }
 
-export function MovieCard({ movie, onFavoriteChange }: MovieCardProps) {
+export function MovieCard({ movie, onFavoriteChange, mediaType = 'movie' }: MovieCardProps) {
   const { user } = useAuth()
   const [isFavorite, setIsFavorite] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  
+  // 根据 mediaType 生成正确的路径
+  const detailPath = mediaType === 'tv' ? `/tv/${movie.id}` : `/movie/${movie.id}`
 
   // 检查是否收藏
   React.useEffect(() => {
@@ -64,7 +68,7 @@ export function MovieCard({ movie, onFavoriteChange }: MovieCardProps) {
   }
 
   return (
-    <Link to={`/movie/${movie.id}`} className="block isolate focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 rounded-lg">
+    <Link to={detailPath} className="block isolate focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 rounded-lg">
       <div className="movie-card relative group overflow-hidden rounded-lg shadow-md transition-shadow duration-300 hover:shadow-2xl focus-within:shadow-2xl">
         {/* 海报图片 */}
         <div className="aspect-[2/3] overflow-hidden relative bg-gray-200 dark:bg-gray-800">

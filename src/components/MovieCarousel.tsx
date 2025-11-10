@@ -7,9 +7,10 @@ interface MovieCarouselProps {
   title: string
   movies: Movie[]
   onFavoriteChange?: () => void
+  mediaType?: 'movie' | 'tv' // 新增：区分电影和电视剧
 }
 
-export function MovieCarousel({ title, movies, onFavoriteChange }: MovieCarouselProps) {
+export function MovieCarousel({ title, movies, onFavoriteChange, mediaType = 'movie' }: MovieCarouselProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [isScrolling, setIsScrolling] = React.useState(false)
   const [scrollDirection, setScrollDirection] = React.useState<'left' | 'right' | null>(null)
@@ -137,6 +138,7 @@ export function MovieCarousel({ title, movies, onFavoriteChange }: MovieCarousel
                   <MovieCard 
                     movie={movie} 
                     onFavoriteChange={onFavoriteChange}
+                    mediaType={mediaType}
                   />
                 </div>
               ))}

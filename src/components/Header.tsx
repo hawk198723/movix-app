@@ -32,6 +32,7 @@ export function Header() {
   const navLinks = [
     { to: '/', label: 'Home' },
     { to: '/movies', label: 'Movies' },
+    { to: '/tv-series', label: 'TV Series' },
     { to: '/my-list', label: 'My List' }
   ]
 

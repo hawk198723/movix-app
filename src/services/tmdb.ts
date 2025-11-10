@@ -99,4 +99,128 @@ export class TMDbService {
     const response = await tmdbApi.get(`/movie/${movieId}/videos`)
     return response.data.results
   }
+
+  // ===== TV Series API =====
+  
+  // 获取热门电视剧
+  static async getTrendingTV(page: number = 1): Promise<TMDbResponse<Movie>> {
+    const response = await tmdbApi.get(`/trending/tv/week?page=${page}`)
+    const data = response.data
+    return {
+      ...data,
+      results: data.results.map((tv: any) => this.mapTVToMovie(tv))
+    }
+  }
+
+  // 获取流行电视剧
+  static async getPopularTV(page: number = 1): Promise<TMDbResponse<Movie>> {
+    const response = await tmdbApi.get(`/tv/popular?page=${page}`)
+    const data = response.data
+    return {
+      ...data,
+      results: data.results.map((tv: any) => this.mapTVToMovie(tv))
+    }
+  }
+
+  // 获取高分电视剧
+  static async getTopRatedTV(page: number = 1): Promise<TMDbResponse<Movie>> {
+    const response = await tmdbApi.get(`/tv/top_rated?page=${page}`)
+    const data = response.data
+    return {
+      ...data,
+      results: data.results.map((tv: any) => this.mapTVToMovie(tv))
+    }
+  }
+
+  // 获取今日热播电视剧
+  static async getAiringTodayTV(page: number = 1): Promise<TMDbResponse<Movie>> {
+    const response = await tmdbApi.get(`/tv/airing_today?page=${page}`)
+    const data = response.data
+    return {
+      ...data,
+      results: data.results.map((tv: any) => this.mapTVToMovie(tv))
+    }
+  }
+
+  // 获取最新上映电视剧
+  static async getOnTheAirTV(page: number = 1): Promise<TMDbResponse<Movie>> {
+    const response = await tmdbApi.get(`/tv/on_the_air?page=${page}`)
+    const data = response.data
+    return {
+      ...data,
+      results: data.results.map((tv: any) => this.mapTVToMovie(tv))
+    }
+  }
+
+  // 根据类型获取电视剧
+  static async getTVSeriesByGenre(genreId: number, page: number = 1): Promise<TMDbResponse<Movie>> {
+    const response = await tmdbApi.get(`/discover/tv?with_genres=${genreId}&page=${page}`)
+    const data = response.data
+    return {
+      ...data,
+      results: data.results.map((tv: any) => this.mapTVToMovie(tv))
+    }
+  }
+
+  // 获取动作冒险电视剧
+  static async getActionAdventureTV(page: number = 1): Promise<TMDbResponse<Movie>> {
+    return this.getTVSeriesByGenre(10759, page) // 10759 = Action & Adventure
+  }
+
+  // 获取喜剧电视剧
+  static async getComedyTV(page: number = 1): Promise<TMDbResponse<Movie>> {
+    return this.getTVSeriesByGenre(35, page) // 35 = Comedy
+  }
+
+  // 获取犯罪电视剧
+  static async getCrimeTV(page: number = 1): Promise<TMDbResponse<Movie>> {
+    return this.getTVSeriesByGenre(80, page) // 80 = Crime
+  }
+
+  // 获取纪录片
+  static async getDocumentaryTV(page: number = 1): Promise<TMDbResponse<Movie>> {
+    return this.getTVSeriesByGenre(99, page) // 99 = Documentary
+  }
+
+  // 获取剧情电视剧
+  static async getDramaTV(page: number = 1): Promise<TMDbResponse<Movie>> {
+    return this.getTVSeriesByGenre(18, page) // 18 = Drama
+  }
+
+  // 获取科幻电视剧
+  static async getSciFiTV(page: number = 1): Promise<TMDbResponse<Movie>> {
+    return this.getTVSeriesByGenre(10765, page) // 10765 = Sci-Fi & Fantasy
+  }
+
+  // 将电视剧字段转换为电影字段格式（统一接口）
+  private static mapTVToMovie(tv: any): any {
+    return {
+      ...tv,
+      title: tv.name || tv.title,
+      original_title: tv.original_name || tv.original_title,
+      release_date: tv.first_air_date || tv.release_date
+    }
+  }
+
+  // 获取电视剧详情
+  static async getTVSeriesDetails(seriesId: number): Promise<MovieDetails> {
+    const response = await tmdbApi.get(`/tv/${seriesId}`)
+    return this.mapTVToMovie(response.data)
+  }
+
+  // 获取相似电视剧
+  static async getSimilarTVSeries(seriesId: number): Promise<TMDbResponse<Movie>> {
+    const response = await tmdbApi.get(`/tv/${seriesId}/similar`)
+    const data = response.data
+    return {
+      ...data,
+      results: data.results.map((tv: any) => this.mapTVToMovie(tv))
+    }
+  }
+
+  // 获取电视剧视频（预告片等）
+  static async getTVSeriesVideos(seriesId: number) {
+    const response = await tmdbApi.get(`/tv/${seriesId}/videos`)
+    return response.data.results
+  }
 }

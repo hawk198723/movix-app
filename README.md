@@ -1,6 +1,6 @@
-# 🎬 Movix - Movie Streaming App
+# 🎬 Movix - Movie & TV Series Streaming App
 
-一个基于 React + TypeScript 构建的现代化电影流媒体应用，采用 Netflix 风格的用户界面设计。
+A modern movie and TV series streaming application built with React + TypeScript, featuring a Netflix-style user interface.
 
 ![Movix App](https://img.shields.io/badge/React-18.3.1-blue?style=flat-square&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.2.2-blue?style=flat-square&logo=typescript)
@@ -8,115 +8,119 @@
 ![Firebase](https://img.shields.io/badge/Firebase-10.13.0-orange?style=flat-square&logo=firebase)
 ![Vite](https://img.shields.io/badge/Vite-5.4.1-646CFF?style=flat-square&logo=vite)
 
-## ✨ 功能特性
+## ✨ Features
 
-### 🔐 用户认证
-- 用户注册和登录
-- Firebase Authentication 集成
-- 受保护的路由
-- 个人资料管理
+### 🔐 User Authentication
+- User registration and login
+- Firebase Authentication integration
+- Protected routes
+- Profile management
 
-### 🎭 电影浏览
-- 热门电影展示
-- 分类浏览（动作、喜剧、恐怖等）
-- 高评分电影推荐
-- Netflix 风格的无限循环轮播
-- 按住箭头连续滑动功能
-- 响应式电影卡片
+### 🎭 Movie & TV Series Browsing
+- Browse trending movies and TV shows
+- Category browsing (Action, Comedy, Horror, Drama, etc.)
+- Top-rated content recommendations
+- Netflix-style infinite loop carousel
+- Press-and-hold continuous scrolling
+- Responsive movie/TV cards
+- Separate pages for Movies and TV Series
 
-### 🎬 电影详情
-- 详细的电影信息展示
-- 预告片播放功能（YouTube 集成）
-- 评分和评论系统
-- 相似电影推荐
-- 制作信息和演职人员
+### 🎬 Content Details
+- Detailed movie and TV series information
+- Trailer playback (YouTube integration)
+- Rating and review system
+- Similar content recommendations
+- Production information and cast/crew details
+- Video background hero banner
 
-### 🔍 搜索功能
-- 实时电影搜索
-- TMDb API 集成
-- 搜索结果分页
-- 优化的搜索界面
+### 🔍 Search Functionality
+- Real-time movie and TV series search
+- TMDb API integration
+- Paginated search results
+- Optimized search interface
 
-### 📱 用户体验
-- 🌓 **深色/浅色主题切换**
-- 现代化 Netflix 风格 UI
-- 完全响应式设计（移动端/平板/桌面）
-- 流畅的动画效果
-- 优化的加载状态
-- 错误边界处理
-- 视频背景支持
+### 📱 User Experience
+- 🌓 **Dark/Light Theme Toggle**
+- Modern Netflix-style UI
+- Fully responsive design (Mobile/Tablet/Desktop)
+- Smooth animations and transitions
+- Optimized loading states
+- Error boundary handling
+- Video background support
+- Red progress bar loading indicator
 
-### 💾 个人收藏
-- 添加/移除收藏电影
-- 个人收藏列表
-- 实时同步到 Firebase
-- Hover 显示详细信息
+### 💾 Personal Collections
+- Add/remove favorite movies and TV shows
+- Personal favorites list
+- Real-time sync with Firebase
+- Hover to display detailed information
 
-### 🎨 高级 UI 特性
-- **智能 Hover 效果**：
-  - 播放按钮居中显示
-  - 动态评分圆环（根据分数变色）
-  - 电影信息底部展示
-- **无限轮播**：
-  - 三倍复制数组实现无缝循环
-  - 按住箭头持续滚动
-  - 平滑的 60fps 滚动体验
-- **主题系统**：
-  - localStorage 持久化
-  - 平滑过渡动画
-  - 全局主题切换
+### 🎨 Advanced UI Features
+- **Smart Hover Effects**:
+  - Centered play button
+  - Dynamic rating circle (color changes based on score)
+  - Bottom-aligned content information
+  - Smooth fade-in/slide-up animations
+- **Infinite Carousel**:
+  - Seamless looping with triple-array technique
+  - Press-and-hold continuous scrolling
+  - Smooth 60fps scrolling experience
+- **Theme System**:
+  - localStorage persistence
+  - Smooth transition animations
+  - Global theme switching
 
-## 🛠️ 技术栈
+## 🛠️ Tech Stack
 
-### 前端框架
-- **React 18** - 现代化的 UI 库
-- **TypeScript** - 类型安全的 JavaScript
-- **Vite** - 快速的构建工具
-- **React Router** - 客户端路由
+### Frontend Framework
+- **React 18** - Modern UI library
+- **TypeScript** - Type-safe JavaScript
+- **Vite** - Fast build tool
+- **React Router** - Client-side routing
 
-### 样式和 UI
-- **Tailwind CSS** - 实用优先的 CSS 框架
-- **Lucide React** - 现代化图标库
-- **Class Variance Authority** - 条件样式管理
-- **clsx** - 条件类名工具
-- **YouTube IFrame API** - 视频播放集成
+### Styling and UI
+- **Tailwind CSS** - Utility-first CSS framework
+- **Lucide React** - Modern icon library
+- **Class Variance Authority** - Conditional styling management
+- **clsx** - Conditional className utility
+- **YouTube IFrame API** - Video playback integration
 
-### 状态管理和数据
-- **React Context** - 全局状态管理（Auth & Theme）
-- **Axios** - HTTP 客户端
-- **Firebase** - 后端服务和认证
-- **localStorage** - 主题持久化
+### State Management and Data
+- **React Context** - Global state management (Auth & Theme)
+- **Axios** - HTTP client
+- **Firebase** - Backend services and authentication
+- **localStorage** - Theme persistence
 
-### 开发工具
-- **ESLint** - 代码质量检查
-- **TypeScript ESLint** - TypeScript 专用规则
-- **PostCSS** - CSS 后处理器
-- **Autoprefixer** - CSS 浏览器兼容性
+### Development Tools
+- **ESLint** - Code quality checker
+- **TypeScript ESLint** - TypeScript-specific rules
+- **PostCSS** - CSS post-processor
+- **Autoprefixer** - CSS browser compatibility
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 环境要求
-- Node.js 16.0 或更高版本
-- npm 或 yarn 包管理器
-- TMDb API 密钥
-- Firebase 项目配置
+### Requirements
+- Node.js 16.0 or higher
+- npm or yarn package manager
+- TMDb API key
+- Firebase project configuration
 
-### 安装步骤
+### Installation Steps
 
-1. **克隆项目**
+1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/movix-app.git
+   git clone https://github.com/hawk198723/debate_register.git
    cd movix-app
    ```
 
-2. **安装依赖**
+2. **Install dependencies**
    ```bash
    npm install
    ```
 
-3. **环境配置**
+3. **Environment Configuration**
    
-   创建 `.env.local` 文件并添加以下配置：
+   Create a `.env.local` file and add the following configuration:
    ```env
    VITE_TMDB_API_KEY=your_tmdb_api_key
    VITE_FIREBASE_API_KEY=your_firebase_api_key
@@ -127,39 +131,41 @@
    VITE_FIREBASE_APP_ID=your_firebase_app_id
    ```
 
-4. **启动开发服务器**
+4. **Start development server**
    ```bash
    npm run dev
    ```
 
-5. **访问应用**
+5. **Access the application**
    
-   打开浏览器访问 `http://localhost:5173`
+   Open your browser and visit `http://localhost:5173`
 
-## 📱 API 集成
+## 📱 API Integration
 
 ### TMDb API
-本应用使用 [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api) 获取电影数据：
+This application uses [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api) to fetch content data:
 
-- 热门电影
-- 分类电影
-- 电影搜索
-- 电影详情
-- 相似电影推荐
+- Trending movies and TV shows
+- Category-based content
+- Movie and TV series search
+- Detailed content information
+- Similar content recommendations
+- Video trailers and teasers
 
 ### Firebase Services
-- **Authentication**: 用户注册、登录、登出
-- **Firestore**: 用户数据和收藏列表存储
-- **Hosting**: 应用部署（可选）
+- **Authentication**: User registration, login, logout
+- **Firestore**: User data and favorites list storage
+- **Hosting**: Application deployment (optional)
 
-## 🏗️ 项目结构
+## 🏗️ Project Structure
 
 ```
 movix-app/
-├── public/                 # 静态资源
+├── public/                 # Static assets
+│   └── .htaccess          # SPA routing config
 ├── src/
-│   ├── components/         # React 组件
-│   │   ├── ui/            # 通用 UI 组件
+│   ├── components/         # React components
+│   │   ├── ui/            # Common UI components
 │   │   │   ├── Button.tsx
 │   │   │   ├── Input.tsx
 │   │   │   ├── Loading.tsx
@@ -174,119 +180,124 @@ movix-app/
 │   ├── context/           # React Context
 │   │   ├── AuthContext.tsx
 │   │   └── ThemeContext.tsx
-│   ├── hooks/             # 自定义 Hooks
-│   ├── lib/               # 工具库和配置
+│   ├── hooks/             # Custom hooks
+│   ├── lib/               # Utility libraries and config
 │   │   ├── firebase.ts
 │   │   └── utils.ts
-│   ├── pages/             # 页面组件
+│   ├── pages/             # Page components
 │   │   ├── Home.tsx
 │   │   ├── Login.tsx
 │   │   ├── MovieDetails.tsx
+│   │   ├── TVSeries.tsx
+│   │   ├── TVSeriesDetails.tsx
 │   │   ├── MyList.tsx
 │   │   ├── Register.tsx
 │   │   └── Search.tsx
-│   ├── services/          # API 服务
+│   ├── services/          # API services
 │   │   ├── firebase.ts
 │   │   ├── mockFirebase.ts
 │   │   └── tmdb.ts
-│   ├── types/             # TypeScript 类型定义
+│   ├── types/             # TypeScript type definitions
 │   │   └── index.ts
-│   ├── utils/             # 工具函数
-│   ├── App.tsx            # 主应用组件
-│   ├── main.tsx           # 应用入口
-│   └── index.css          # 全局样式
+│   ├── utils/             # Utility functions
+│   ├── App.tsx            # Main application component
+│   ├── main.tsx           # Application entry point
+│   └── index.css          # Global styles
+├── .github/
+│   └── workflows/
+│       └── deploy-bluehost.yml  # CI/CD configuration
 ├── package.json
-├── tailwind.config.js     # Tailwind 配置
-├── tsconfig.json          # TypeScript 配置
-└── vite.config.ts         # Vite 配置
+├── tailwind.config.js     # Tailwind configuration
+├── tsconfig.json          # TypeScript configuration
+└── vite.config.ts         # Vite configuration
 ```
 
-## 🎨 设计特色
+## 🎨 Design Features
 
-### Netflix 风格界面
-- 深色/浅色双主题支持
-- 红色品牌色调 (#E50914)
-- 现代化卡片布局
-- 流畅的悬停效果
-- 视频背景 Hero Banner
+### Netflix-Style Interface
+- Dark/Light dual theme support
+- Red brand color (#E50914)
+- Modern card layouts
+- Smooth hover effects
+- Video background hero banner
 
-### 响应式设计
-- 移动优先的设计理念
-- 平板和桌面设备完美适配
-- 灵活的网格布局
-- 优化的触摸交互
-- 响应式导航栏
+### Responsive Design
+- Mobile-first design philosophy
+- Perfect adaptation for tablets and desktops
+- Flexible grid layouts
+- Optimized touch interactions
+- Responsive navigation bar
 
-### 用户体验优化
-- 渐进式加载动画
-- 红色进度条加载指示
-- 平滑的页面过渡
-- 直观的导航设计
-- 智能 Hover 信息展示
-- 评分圆环动态颜色
-- 无限循环轮播体验
+### User Experience Optimization
+- Progressive loading animations
+- Red progress bar loading indicator
+- Smooth page transitions
+- Intuitive navigation design
+- Smart hover information display
+- Dynamic rating circle colors
+- Infinite loop carousel experience
 
-### 高级交互
-- **按住滑动**：按住箭头连续滚动电影列表
-- **主题切换**：一键切换深色/浅色模式
-- **视频预告**：点击播放按钮观看 YouTube 预告片
-- **评分系统**：Conic gradient 显示评分进度
+### Advanced Interactions
+- **Press-and-Hold Scrolling**: Hold arrow buttons to continuously scroll through content
+- **Theme Switching**: One-click toggle between dark/light modes
+- **Video Trailers**: Click play button to watch YouTube trailers
+- **Rating System**: Conic gradient displays rating progress (Green ≥7.0, Yellow 5.0-6.9, Red <5.0)
 
-## 🧪 开发命令
+## 🧪 Development Commands
 
 ```bash
-# 启动开发服务器
+# Start development server
 npm run dev
 
-# 构建生产版本
+# Build for production
 npm run build
 
-# 代码质量检查
+# Code quality check
 npm run lint
 
-# 预览生产构建
+# Preview production build
 npm run preview
 ```
 
-## 📦 构建和部署
+## 📦 Build and Deployment
 
-### 本地构建
+### Local Build
 ```bash
 npm run build
 ```
 
-构建文件将生成在 `dist/` 目录下。
+Build files will be generated in the `dist/` directory.
 
-### 部署选项
+### Deployment Options
 
-#### Bluehost（共享主机 / cPanel）
+#### Bluehost (Shared Hosting / cPanel)
 
-1) 手动部署（最快）
+1) Manual Deployment (Fastest)
 
-- 运行 `npm run build`，得到 `dist/` 目录
-- 登录 cPanel → File Manager → 进入 `public_html/`
-- 上传 `dist/` 内的所有文件到 `public_html/`
-- 确保把仓库中的 `public/.htaccess` 一并上传到根目录（`public_html/.htaccess`），用于 SPA 路由
-- 若显示 404/刷新白屏，多半是缺 `.htaccess`
+- Run `npm run build` to generate `dist/` directory
+- Login to cPanel → File Manager → Navigate to `public_html/`
+- Upload all files from `dist/` to `public_html/`
+- Make sure to upload `public/.htaccess` to the root directory (`public_html/.htaccess`) for SPA routing
+- If you see 404 errors or blank pages on refresh, you're likely missing `.htaccess`
 
-2) GitHub Actions 自动部署（推荐）
+2) GitHub Actions Auto-Deployment (Recommended)
 
-- 在 GitHub 仓库中添加 Secrets：`FTP_HOST`、`FTP_USERNAME`、`FTP_PASSWORD`
-- 默认部署到 `public_html/`，可在 `.github/workflows/deploy-bluehost.yml` 中调整
-- 推送到 `main` 分支即自动构建并通过 FTPS 同步 `dist/`
+- Add Secrets in your GitHub repository: `FTP_HOST`, `FTP_USERNAME`, `FTP_PASSWORD`
+- Default deployment target is `public_html/`, adjustable in `.github/workflows/deploy-bluehost.yml`
+- Push to `main` branch to automatically build and sync `dist/` via FTPS
 
-注意：若你的 Bluehost 仅支持 FTP（不支持 FTPS），可将 `protocol: ftps` 改为 `ftp`。
+Note: If your Bluehost only supports FTP (not FTPS), change `protocol: ftps` to `ftp` in the workflow file.
 
-#### Vercel 部署
+#### Vercel Deployment
 ```bash
 npm i -g vercel
 vercel
 ```
 
-#### Netlify 部署
+#### Netlify Deployment
 ```bash
 npm run build
-# 将 dist 目录拖拽到 Netlify
+# Drag and drop the dist directory to Netlify
 ```
 
 #### Firebase Hosting
@@ -297,10 +308,10 @@ firebase init hosting
 firebase deploy
 ```
 
-## 🔧 自定义配置
+## 🔧 Custom Configuration
 
-### Tailwind CSS 主题
-在 `tailwind.config.js` 中自定义颜色和样式：
+### Tailwind CSS Theme
+Customize colors and styles in `tailwind.config.js`:
 
 ```javascript
 theme: {
@@ -312,49 +323,49 @@ theme: {
         gray: '#2A2A2A',
         lightGray: '#B3B3B3',
       }
+    },
+    keyframes: {
+      'loading-slide': {
+        '0%': { transform: 'translateX(-100%)' },
+        '100%': { transform: 'translateX(100%)' },
+      }
     }
   }
 }
 ```
 
-### Firebase 配置
-在 `src/lib/firebase.ts` 中配置 Firebase 服务：
+### Firebase Configuration
+Configure Firebase services in `src/lib/firebase.ts`:
 
 ```typescript
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  // ...其他配置
+  // ...other configuration
 }
 ```
 
-## 🤝 贡献指南
+## 🤝 Contributing
 
-1. Fork 本仓库
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 创建 Pull Request
+1. Fork this repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Create a Pull Request
 
-## 📄 许可证
+## 📄 License
 
-本项目基于 MIT 许可证开源。查看 [LICENSE](LICENSE) 文件了解更多详情。
+This project is open-sourced under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-## 🙏 致谢
+## 🙏 Acknowledgments
 
-- [The Movie Database (TMDb)](https://www.themoviedb.org/) - 提供电影数据 API
-- [Firebase](https://firebase.google.com/) - 后端服务和认证
-- [React](https://reactjs.org/) - 前端框架
-- [Tailwind CSS](https://tailwindcss.com/) - CSS 框架
-- [Lucide](https://lucide.dev/) - 图标库
-
-## 📧 联系方式
-
-如有问题或建议，请通过以下方式联系：
-
-- 项目 Issues: [GitHub Issues](https://github.com/your-username/movix-app/issues)
-- 邮箱: your-email@example.com
+- [The Movie Database (TMDb)](https://www.themoviedb.org/) - Providing movie and TV data API
+- [Firebase](https://firebase.google.com/) - Backend services and authentication
+- [React](https://reactjs.org/) - Frontend framework
+- [Tailwind CSS](https://tailwindcss.com/) - CSS framework
+- [Lucide](https://lucide.dev/) - Icon library
+- [YouTube IFrame API](https://developers.google.com/youtube/iframe_api_reference) - Video playback
 
 ---
 
-⭐ 如果这个项目对您有帮助，请给它一个星标！
+⭐ If this project helps you, please give it a star!

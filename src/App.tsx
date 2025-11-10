@@ -8,7 +8,9 @@ import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { Search } from './pages/Search'
 import { MovieDetails } from './pages/MovieDetails'
+import { TVSeriesDetails } from './pages/TVSeriesDetails'
 import { MyList } from './pages/MyList'
+import { TVSeries } from './pages/TVSeries'
 import { Loading } from './components/ui/Loading'
 import { ErrorBoundary } from './components/ErrorBoundary'
 
@@ -101,12 +103,30 @@ function AppContent() {
           }
         />
         <Route
+          path="/tv/:id"
+          element={
+            <>
+              <Header />
+              <TVSeriesDetails />
+            </>
+          }
+        />
+        <Route
           path="/my-list"
           element={
             <ProtectedRoute>
               <Header />
               <MyList />
             </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/tv-series"
+          element={
+            <>
+              <Header />
+              <TVSeries />
+            </>
           }
         />
 
