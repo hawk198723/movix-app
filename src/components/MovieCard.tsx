@@ -45,76 +45,87 @@ export function MovieCard({ movie, onFavoriteChange }: MovieCardProps) {
     }
   }
 
+  // 根据评分决定颜色（用于 conic-gradient）
+  const getRatingGradient = (rating: number) => {
+    // 将 0-10 映射到 0-360 度
+    const percentage = (rating / 10) * 100
+    const degrees = (rating / 10) * 360
+    
+    let color = '#ef4444' // 红色 (< 3)
+    if (rating >= 7.0) {
+      color = '#22c55e' // 绿色 (>= 7)
+    } else if (rating >= 3.0) {
+      color = '#eab308' // 黄色 (3-7)
+    }
+    
+    return {
+      background: `conic-gradient(${color} ${degrees}deg, rgba(255, 255, 255, 0.2) ${degrees}deg)`
+    }
+  }
+
   return (
-    <Link to={`/movie/${movie.id}`} className="block">
-      <div className="movie-card relative group overflow-hidden rounded-lg bg-gray-900 shadow-lg">
+    <Link to={`/movie/${movie.id}`} className="block isolate focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 rounded-lg">
+      <div className="movie-card relative group overflow-hidden rounded-lg shadow-md transition-shadow duration-300 hover:shadow-2xl focus-within:shadow-2xl">
         {/* 海报图片 */}
-        <div className="aspect-[2/3] overflow-hidden">
+        <div className="aspect-[2/3] overflow-hidden relative bg-gray-200 dark:bg-gray-800">
           <img
             src={getImageUrl(movie.poster_path, 'w342')}
             alt={movie.title}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+            className="w-full h-full object-cover"
             loading="lazy"
           />
-        </div>
-
-        {/* 悬停覆盖层 */}
-        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4">
-          {/* 顶部操作按钮 */}
-          <div className="flex justify-between items-start">
-            <div className="flex items-center space-x-1 bg-black/50 rounded px-2 py-1">
-              <Star className="w-4 h-4 text-yellow-400 fill-current" />
-              <span className="text-sm font-medium">{formatRating(movie.vote_average)}</span>
-            </div>
+          
+          {/* 悬停信息层 - 仅在当前卡片 hover/focus 时显示 */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-300 pointer-events-none md:block hidden">
+            {/* 半透明渐变背景 */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
             
-            {user && (
-              <button
-                onClick={handleFavoriteToggle}
-                disabled={isLoading}
-                className="p-2 bg-black/50 rounded-full hover:bg-black/70 transition-colors"
-              >
-                <Heart 
-                  className={`w-5 h-5 ${
-                    isFavorite ? 'text-red-500 fill-current' : 'text-white'
-                  }`} 
-                />
-              </button>
-            )}
-          </div>
-
-          {/* 底部信息 */}
-          <div className="space-y-2">
-            <h3 className="font-semibold text-lg leading-tight line-clamp-2">
-              {movie.title}
-            </h3>
-            <p className="text-gray-300 text-sm line-clamp-2">
-              {movie.overview}
-            </p>
-            <div className="flex items-center justify-between">
-              <span className="text-gray-400 text-sm">
-                {new Date(movie.release_date).getFullYear()}
-              </span>
-              <div className="flex items-center space-x-1 text-sm">
-                <Play className="w-4 h-4" />
-                <span>Watch</span>
+            {/* 红色播放按钮 - 居中显示 */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-16 h-16 bg-red-600/90 rounded-full flex items-center justify-center hover:bg-red-700/90 transition-colors cursor-pointer shadow-xl scale-100 group-hover:scale-110 transition-transform duration-300">
+                <Play className="w-8 h-8 text-white fill-current ml-1" />
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* 移动端信息（始终显示） */}
-        <div className="sm:hidden p-3 bg-gray-900">
-          <h3 className="font-semibold text-sm leading-tight line-clamp-1 mb-1">
-            {movie.title}
-          </h3>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-1">
-              <Star className="w-3 h-3 text-yellow-400 fill-current" />
-              <span className="text-xs">{formatRating(movie.vote_average)}</span>
+            
+            {/* 底部信息栏 - 评分、标题、年份 */}
+            <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+              <div className="flex items-center gap-3 mb-2">
+                {/* 评分圆环 - conic-gradient 显示进度 */}
+                <div 
+                  className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+                  style={getRatingGradient(movie.vote_average)}
+                >
+                  <div className="w-9 h-9 rounded-full bg-black flex items-center justify-center">
+                    <span className="text-white text-sm font-bold">{formatRating(movie.vote_average)}</span>
+                  </div>
+                </div>
+                
+                {/* 电影信息 - 标题和年份 */}
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-white font-bold text-base line-clamp-2 mb-0.5 drop-shadow-lg">
+                    {movie.title}
+                  </h3>
+                  <span className="text-gray-300 text-sm drop-shadow-md">
+                    {new Date(movie.release_date).getFullYear()}
+                  </span>
+                </div>
+                
+                {/* 收藏按钮 */}
+                {user && (
+                  <button
+                    onClick={handleFavoriteToggle}
+                    disabled={isLoading}
+                    className="pointer-events-auto p-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors flex-shrink-0"
+                  >
+                    <Heart 
+                      className={`w-5 h-5 ${
+                        isFavorite ? 'text-red-500 fill-current' : 'text-white'
+                      }`} 
+                    />
+                  </button>
+                )}
+              </div>
             </div>
-            <span className="text-gray-400 text-xs">
-              {new Date(movie.release_date).getFullYear()}
-            </span>
           </div>
         </div>
       </div>

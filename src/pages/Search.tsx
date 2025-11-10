@@ -77,26 +77,30 @@ export function Search() {
   }
 
   return (
-    <div className="pt-16 min-h-screen bg-netflix-black">
-      <div className="container mx-auto px-4 py-8">
+    <div className="pt-20 min-h-screen bg-white dark:bg-netflix-black transition-colors duration-200">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* 搜索表单 */}
-        <div className="max-w-2xl mx-auto mb-8">
-          <form onSubmit={handleSearch} className="relative">
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search for movies..."
-              className="w-full px-6 py-4 pl-14 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-netflix-red focus:border-transparent text-lg"
-            />
-            <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-400" />
-            <Button
-              type="submit"
-              className="absolute right-2 top-1/2 transform -translate-y-1/2"
-              disabled={!query.trim() || loading}
-            >
-              Search
-            </Button>
+        <div className="max-w-3xl mx-auto mb-12">
+          <form onSubmit={handleSearch}>
+            <div className="flex items-center gap-2 border-2 border-netflix-red rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 p-2">
+              <div className="relative flex-1">
+                <input
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search for movies..."
+                  className="w-full px-4 py-3 pl-12 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-lg"
+                />
+                <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-400" />
+              </div>
+              <Button
+                type="submit"
+                className="bg-netflix-red hover:bg-red-700 flex-shrink-0"
+                disabled={!query.trim() || loading}
+              >
+                Search
+              </Button>
+            </div>
           </form>
         </div>
 
@@ -119,11 +123,11 @@ export function Search() {
         {movies.length > 0 && (
           <>
             {/* 结果统计 */}
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold mb-2">
+            <div className="mb-8">
+              <h2 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">
                 Search Results for "{query}"
               </h2>
-              <p className="text-gray-400">
+              <p className="text-gray-600 dark:text-gray-400">
                 Found {totalResults.toLocaleString()} movies
               </p>
             </div>
@@ -157,10 +161,10 @@ export function Search() {
 
         {/* 无结果 */}
         {!loading && movies.length === 0 && query && (
-          <div className="text-center py-12">
-            <SearchIcon className="w-16 h-16 text-gray-500 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-2">No movies found</h3>
-            <p className="text-gray-400 mb-4">
+          <div className="text-center py-16">
+            <SearchIcon className="w-20 h-20 text-gray-400 dark:text-gray-600 mx-auto mb-6" />
+            <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">No movies found</h3>
+            <p className="text-gray-600 dark:text-gray-400 text-lg mb-4">
               Try searching with different keywords
             </p>
           </div>
@@ -168,10 +172,10 @@ export function Search() {
 
         {/* 默认状态 */}
         {!query && movies.length === 0 && (
-          <div className="text-center py-12">
-            <SearchIcon className="w-16 h-16 text-gray-500 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Search Movies</h3>
-            <p className="text-gray-400">
+          <div className="text-center py-16">
+            <SearchIcon className="w-20 h-20 text-gray-400 dark:text-gray-600 mx-auto mb-6" />
+            <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Search Movies</h3>
+            <p className="text-gray-600 dark:text-gray-400 text-lg">
               Enter a movie title to get started
             </p>
           </div>

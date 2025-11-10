@@ -112,10 +112,10 @@ export function CommentSection({ movieId }: CommentSectionProps) {
   }
 
   return (
-    <div className="bg-gray-900 rounded-lg p-6">
+    <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-6 transition-colors duration-200">
       <div className="flex items-center gap-2 mb-6">
         <MessageCircle className="w-6 h-6 text-netflix-red" />
-        <h3 className="text-2xl font-semibold">
+        <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
           Comments ({comments.length})
         </h3>
       </div>
@@ -129,11 +129,11 @@ export function CommentSection({ movieId }: CommentSectionProps) {
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
                 placeholder="Share your thoughts about this movie..."
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-netflix-red focus:border-transparent resize-none"
+                className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-netflix-red focus:border-transparent resize-none transition-colors"
                 rows={3}
                 maxLength={500}
               />
-              <div className="text-right text-gray-400 text-sm mt-1">
+              <div className="text-right text-gray-600 dark:text-gray-400 text-sm mt-1">
                 {newComment.length}/500
               </div>
             </div>
@@ -156,8 +156,8 @@ export function CommentSection({ movieId }: CommentSectionProps) {
           </div>
         </form>
       ) : (
-        <div className="bg-gray-800 rounded-lg p-4 mb-8 text-center">
-          <p className="text-gray-400">
+        <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 mb-8 text-center transition-colors duration-200">
+          <p className="text-gray-700 dark:text-gray-400">
             Please <a href="/login" className="text-netflix-red hover:underline">sign in</a> to leave a comment
           </p>
         </div>
@@ -177,13 +177,13 @@ export function CommentSection({ movieId }: CommentSectionProps) {
         </div>
       ) : comments.length === 0 ? (
         <div className="text-center py-8">
-          <MessageCircle className="w-12 h-12 text-gray-500 mx-auto mb-4" />
-          <p className="text-gray-400">No comments yet. Be the first to share your thoughts!</p>
+          <MessageCircle className="w-12 h-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+          <p className="text-gray-700 dark:text-gray-400">No comments yet. Be the first to share your thoughts!</p>
         </div>
       ) : (
         <div className="space-y-4">
           {comments.map((comment) => (
-            <div key={comment.id} className="bg-gray-800 rounded-lg p-4">
+            <div key={comment.id} className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 transition-colors duration-200">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-netflix-red rounded-full flex items-center justify-center">
@@ -193,7 +193,7 @@ export function CommentSection({ movieId }: CommentSectionProps) {
                     <h4 className="font-medium">
                       {comment.userDisplayName || comment.userEmail}
                     </h4>
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">
                       {formatDate(comment.createdAt)}
                       {comment.updatedAt > comment.createdAt && ' (edited)'}
                     </p>
@@ -205,13 +205,13 @@ export function CommentSection({ movieId }: CommentSectionProps) {
                   <div className="flex gap-2">
                     <button
                       onClick={() => startEdit(comment)}
-                      className="text-gray-400 hover:text-white p-1"
+                      className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white p-1"
                     >
                       <Edit2 className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => handleDeleteComment(comment.id)}
-                      className="text-gray-400 hover:text-red-400 p-1"
+                      className="text-gray-600 dark:text-gray-400 hover:text-red-400 p-1"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -247,7 +247,7 @@ export function CommentSection({ movieId }: CommentSectionProps) {
                   </div>
                 </div>
               ) : (
-                <p className="text-gray-300 leading-relaxed">
+                <p className="text-gray-900 dark:text-gray-300 leading-relaxed">
                   {comment.content}
                 </p>
               )}

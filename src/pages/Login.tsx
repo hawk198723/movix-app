@@ -61,21 +61,21 @@ export function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-netflix-black flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gray-50 dark:bg-netflix-black flex items-center justify-center px-4 transition-colors duration-200">
       {/* 背景装饰 */}
       <div className="absolute inset-0 bg-gradient-to-br from-netflix-red/10 to-transparent" />
       
       <div className="relative w-full max-w-md">
-        <div className="bg-gray-900/80 backdrop-blur-sm rounded-lg shadow-2xl p-8">
+        <div className="bg-white/95 dark:bg-gray-900/80 backdrop-blur-sm rounded-lg shadow-2xl p-8 transition-colors duration-200">
           {/* Logo */}
           <div className="text-center mb-8">
             <Link to="/" className="text-netflix-red text-3xl font-bold">
               MOVIX
             </Link>
-            <h2 className="mt-4 text-2xl font-bold text-white">
+            <h2 className="mt-4 text-2xl font-bold text-gray-900 dark:text-white">
               Sign in to your account
             </h2>
-            <p className="mt-2 text-gray-400">
+            <p className="mt-2 text-gray-600 dark:text-gray-400">
               Welcome back! Please enter your details.
             </p>
           </div>

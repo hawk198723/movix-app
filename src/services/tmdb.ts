@@ -93,4 +93,10 @@ export class TMDbService {
     const response = await tmdbApi.get('/genre/movie/list')
     return response.data.genres
   }
+
+  // 获取电影视频（预告片等）
+  static async getMovieVideos(movieId: number) {
+    const response = await tmdbApi.get(`/movie/${movieId}/videos`)
+    return response.data.results
+  }
 }

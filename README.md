@@ -20,26 +20,51 @@
 - 热门电影展示
 - 分类浏览（动作、喜剧、恐怖等）
 - 高评分电影推荐
-- Netflix 风格的轮播展示
+- Netflix 风格的无限循环轮播
+- 按住箭头连续滑动功能
 - 响应式电影卡片
+
+### 🎬 电影详情
+- 详细的电影信息展示
+- 预告片播放功能（YouTube 集成）
+- 评分和评论系统
+- 相似电影推荐
+- 制作信息和演职人员
 
 ### 🔍 搜索功能
 - 实时电影搜索
 - TMDb API 集成
 - 搜索结果分页
-- 智能搜索建议
+- 优化的搜索界面
 
 ### 📱 用户体验
+- 🌓 **深色/浅色主题切换**
 - 现代化 Netflix 风格 UI
-- 完全响应式设计
+- 完全响应式设计（移动端/平板/桌面）
 - 流畅的动画效果
 - 优化的加载状态
 - 错误边界处理
+- 视频背景支持
 
 ### 💾 个人收藏
 - 添加/移除收藏电影
 - 个人收藏列表
-- 本地状态管理
+- 实时同步到 Firebase
+- Hover 显示详细信息
+
+### 🎨 高级 UI 特性
+- **智能 Hover 效果**：
+  - 播放按钮居中显示
+  - 动态评分圆环（根据分数变色）
+  - 电影信息底部展示
+- **无限轮播**：
+  - 三倍复制数组实现无缝循环
+  - 按住箭头持续滚动
+  - 平滑的 60fps 滚动体验
+- **主题系统**：
+  - localStorage 持久化
+  - 平滑过渡动画
+  - 全局主题切换
 
 ## 🛠️ 技术栈
 
@@ -54,11 +79,13 @@
 - **Lucide React** - 现代化图标库
 - **Class Variance Authority** - 条件样式管理
 - **clsx** - 条件类名工具
+- **YouTube IFrame API** - 视频播放集成
 
 ### 状态管理和数据
-- **React Context** - 全局状态管理
+- **React Context** - 全局状态管理（Auth & Theme）
 - **Axios** - HTTP 客户端
 - **Firebase** - 后端服务和认证
+- **localStorage** - 主题持久化
 
 ### 开发工具
 - **ESLint** - 代码质量检查
@@ -133,14 +160,20 @@ movix-app/
 ├── src/
 │   ├── components/         # React 组件
 │   │   ├── ui/            # 通用 UI 组件
+│   │   │   ├── Button.tsx
+│   │   │   ├── Input.tsx
+│   │   │   ├── Loading.tsx
+│   │   │   └── LoadingBar.tsx
 │   │   ├── CommentSection.tsx
 │   │   ├── ErrorBoundary.tsx
 │   │   ├── Header.tsx
 │   │   ├── HeroBanner.tsx
 │   │   ├── MovieCard.tsx
-│   │   └── MovieCarousel.tsx
+│   │   ├── MovieCarousel.tsx
+│   │   └── VideoBackground.tsx
 │   ├── context/           # React Context
-│   │   └── AuthContext.tsx
+│   │   ├── AuthContext.tsx
+│   │   └── ThemeContext.tsx
 │   ├── hooks/             # 自定义 Hooks
 │   ├── lib/               # 工具库和配置
 │   │   ├── firebase.ts
@@ -171,22 +204,33 @@ movix-app/
 ## 🎨 设计特色
 
 ### Netflix 风格界面
-- 深色主题配色方案
+- 深色/浅色双主题支持
 - 红色品牌色调 (#E50914)
 - 现代化卡片布局
 - 流畅的悬停效果
+- 视频背景 Hero Banner
 
 ### 响应式设计
 - 移动优先的设计理念
-- 平板和桌面设备适配
+- 平板和桌面设备完美适配
 - 灵活的网格布局
 - 优化的触摸交互
+- 响应式导航栏
 
 ### 用户体验优化
-- 骨架屏加载状态
-- 渐进式图片加载
+- 渐进式加载动画
+- 红色进度条加载指示
 - 平滑的页面过渡
 - 直观的导航设计
+- 智能 Hover 信息展示
+- 评分圆环动态颜色
+- 无限循环轮播体验
+
+### 高级交互
+- **按住滑动**：按住箭头连续滚动电影列表
+- **主题切换**：一键切换深色/浅色模式
+- **视频预告**：点击播放按钮观看 YouTube 预告片
+- **评分系统**：Conic gradient 显示评分进度
 
 ## 🧪 开发命令
 

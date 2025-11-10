@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { HeroBanner } from '../components/HeroBanner'
 import { MovieCarousel } from '../components/MovieCarousel'
-import { Loading } from '../components/ui/Loading'
+import { LoadingBar } from '../components/ui/LoadingBar'
 import { TMDbService } from '../services/tmdb'
 import type { Movie } from '../types'
 
@@ -69,18 +69,20 @@ export function Home() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-netflix-black flex items-center justify-center">
-        <Loading size="lg" text="Loading movies..." />
+      <div className="min-h-screen bg-white dark:bg-netflix-black transition-colors duration-200">
+        <div className="pt-16">
+          <LoadingBar />
+        </div>
       </div>
     )
   }
 
   if (error) {
     return (
-      <div className="min-h-screen bg-netflix-black flex items-center justify-center">
+      <div className="min-h-screen bg-white dark:bg-netflix-black flex items-center justify-center transition-colors duration-200">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-red-500 mb-4">Error</h2>
-          <p className="text-gray-300 mb-4">{error}</p>
+          <p className="text-gray-700 dark:text-gray-300 mb-4">{error}</p>
           <button
             onClick={loadMovies}
             className="px-4 py-2 bg-netflix-red text-white rounded hover:bg-red-700 transition-colors"
@@ -93,13 +95,13 @@ export function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-netflix-black">
+    <div className="min-h-screen bg-white dark:bg-netflix-black transition-colors duration-200">
       {/* 顶部间距（为固定导航栏留空间） */}
       <div className="pt-16">
         {/* 横幅 */}
         <HeroBanner movie={heroMovie} />
 
-        {/* 电影分类 */}
+        {/* 电影分类 - 轮播布局 */}
         <div className="space-y-8 py-8">
           {trending.length > 0 && (
             <MovieCarousel

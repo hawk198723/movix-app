@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
+import { ThemeProvider } from './context/ThemeContext'
 import { Header } from './components/Header'
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
@@ -17,7 +18,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-netflix-black flex items-center justify-center">
+      <div className="min-h-screen bg-white dark:bg-netflix-black flex items-center justify-center">
         <Loading size="lg" text="Loading..." />
       </div>
     )
@@ -36,7 +37,7 @@ function PublicRoute({ children }: { children: React.ReactNode }) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-netflix-black flex items-center justify-center">
+      <div className="min-h-screen bg-white dark:bg-netflix-black flex items-center justify-center">
         <Loading size="lg" text="Loading..." />
       </div>
     )
@@ -51,7 +52,7 @@ function PublicRoute({ children }: { children: React.ReactNode }) {
 
 function AppContent() {
   return (
-    <div className="min-h-screen bg-netflix-black text-white">
+    <div className="min-h-screen bg-white dark:bg-netflix-black text-gray-900 dark:text-white transition-colors duration-200">
       <Routes>
         {/* 公共路由 */}
         <Route
@@ -119,11 +120,13 @@ function AppContent() {
 function App() {
   return (
     <ErrorBoundary>
-      <AuthProvider>
-        <Router>
-          <AppContent />
-        </Router>
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <Router>
+            <AppContent />
+          </Router>
+        </AuthProvider>
+      </ThemeProvider>
     </ErrorBoundary>
   )
 }
